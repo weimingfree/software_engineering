@@ -1,0 +1,389 @@
+/**/
+.header{
+    width: 100%;
+    height: 40px;
+    line-height: 34px;
+    background: #333;
+    font-size:12px;
+    text-align: center;
+}
+.wrap{
+    width: 1226px;
+    margin:0 auto;/*垂直居中*/
+}
+.header-left{
+    float:left;
+}
+.header-right{
+    float:right;
+}
+.header li{
+    position: relative;
+    list-style-type: none;/*否则每个li前面都会哟黑点*/
+    float:left;
+}
+.header a{
+    color:#fff
+}
+.header a:hover{/*悬停*/
+    color:#aaa;
+}
+.header span{
+   color: #424242; 
+   margin: 0 3.6px;
+}
+.cart{
+    position: relative;
+    width: 120px;
+    background-color: #424242;
+    margin-left: 25px;
+    /* cursor: pointer; */
+}
+/* 因为此处cart>a早已设置颜色故不会继承父元素的字体颜色*/
+.cart:hover{
+   background-color: #fff;
+   color: #ff6700; 
+}
+.cart:hover>a{
+    color:#ff6700;
+}
+/*1）绝对定位到正常位置
+ 2）隐藏
+ 3）鼠标悬停显示 */
+ .cart-list{
+    z-index: 800;
+    /* 不显示*/
+    /* 因为要过渡，所以这里字是显示的 */
+    /* 绝对定位 */
+    position: absolute;
+    top:30px;
+    right:0;
+    width: 316px;
+    /* 如何过渡，需要把height设置为0，但这样字就不会被隐藏,所以要进行
+    隐藏 */
+    height:0;
+    overflow: hidden; 
+    line-height: 50px;
+    background-color:#fff;
+    text-align: center;
+    /* 阴影效果 */
+    box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    /* 过渡显示 */
+    transition: all 1s;
+ }
+ .cart:hover>.cart-list{
+    /* 鼠标悬停，高度逐渐下来 */
+    height: 50px;
+ }
+ .download{
+    position: absolute;
+    top: 30px;
+    /* 水平居中 */
+    /* 1)将左边挪到父元素的中间
+    2）再将左边-62个单位即可做到水平居中 */
+    left: 50%; 
+    margin-left: -62px; 
+    width: 124px;
+    height:0;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 1px 5px #aaa;
+    transition: all .5s;
+    z-index: 800;
+ }
+ .download img{
+    width: 90px;
+    margin: 18px 15px 12px;
+ }
+ .download p{
+    position: relative;
+    top:0px;
+    color: #333;
+    font-size: 14px;
+    line-height: 14px;
+ }
+ .header-left>li:hover>.download{
+    height: 148px;
+ }
+ .header-left>li:hover>.triangle{
+    display: block;
+ }
+ .triangle{
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: -8px;
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid #fff;
+    border-left:8px solid transparent;
+    border-right:8px solid transparent;
+ }
+ .nav{
+    position: relative;
+    width: 100%;
+    height:100px;
+    padding-left: 50px;
+    background-color:#fff;
+ }
+ .logo{
+    margin-top: 30px;
+    float:left;
+    width:230px;
+    height:50px;
+    padding-right: 50px;
+    box-sizing: border-box;
+    background-color:#fff;
+ }
+ .nav-bar{
+    float:left;
+    width:700px;
+    height:100px;
+    line-height: 86px;
+    /* padding-left: 140px; */
+    /* padding 和border不再影响元素的宽高 */
+    box-sizing: border-box;
+    background-color:#fff ;
+ }
+ .search{
+    position: relative;
+    float:right;
+    width: 296px;
+    height: 50px;
+    margin-top: 25px;
+    background-color: #fff;
+ }
+.logo img{
+    width: 80%;
+}
+.nav-bar>ul>li{
+    list-style-type: none;
+    float: left;
+    padding: 0 10px;
+}
+.nav-bar>ul>li>a:hover{
+    color:#ff6700;
+}
+.nav-bar-list{
+    z-index: 800;
+    display: none;
+    position: absolute;
+    left:0;
+    top:100px;
+    width: 100%;
+    height: 229px;
+    background-color:#fff;
+    border-top:1px solid #e0e0e0;
+    box-shadow: 0 3px 4px rgba(0 0 0 .18);
+}
+.nav-bar li:hover>.nav-bar-list{
+display: block;
+}
+.nav-bar-list li{
+    float: left;
+    width: 204px;
+    height:200px;
+    padding-top: 0px;
+}
+.nav-img-box img{
+    width: 100%;
+    border-right: 1px solid #e0e0e0;
+    box-sizing: border-box;
+}
+.nav-bar-list p{
+    font-size: 12px;
+    line-height: 20px;
+}
+.nav-bar-list p:nth-of-type(2){
+    color: #ff6700;
+}
+.search>input{
+    float: left;
+    width: 223px;
+    height: 48px;
+    padding: 0 10px;
+    border: 1px solid #e0e0e0;
+    border-right: none;
+    /* 点击没有黑框 */
+    outline: none;
+    transition: all .2s;
+}
+.search>button{
+    /* 加上float转换为块 */
+    float: left;
+    width: 52px;
+    height: 48px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    font-size: 20px;
+    outline: none;
+    transition: all .2s;
+}
+.search>button:hover{
+    background-color: #ff6700;
+    border-color: #ff6700;
+    color: #fff;
+}
+.search>input:hover,.search>input:hover+button{
+    border-color:#606060;
+}
+.search>input:focus,.search>input:focus+button{
+    border-color:#ff6700;
+}
+.search-list{
+    z-index: 750;
+    display: none;
+    position:absolute;
+    left: 0;
+    top: 50px;
+    width: 223px;
+    height: 240px;
+    border: 1px solid #ff6700;
+    border-top:none;
+    /* 设置白背景，不再透明 */
+    background-color: #fafafa;
+}
+.search>input:focus~.search-list{
+    display: block;
+}
+.search-list>a{
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 6px 15px;
+    box-sizing: border-box;
+    text-align: left;
+}
+.search-list>a:hover{
+   background-color: #fafafa;
+}
+.banner{
+    width: 100%;
+    height: 460px;
+    background-color: #fff;
+}
+.banner-box{
+    position: relative;
+    width: 100%;
+    height: 460px;
+    background-color:#fff;
+}
+.banner-box>img{
+    width: 100%;
+    height: 460px;
+}
+.slide{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 234px;
+    height: 420px;
+    background-color: rgba(105,101,101,.6);
+    padding: 20px 0;
+}
+.slide>ul>li{
+    height: 42px;
+    line-height: 42px;
+    text-align: left;
+    padding-left: 30px;   
+}
+.slide>ul>li:hover{
+    background-color: #ff6700;
+}
+.slide a{
+    color: #fff;
+    font-size: 14px;
+}
+.slide i{
+    padding-right: 30px;
+    color: #fff;
+    float:right;
+}
+.slide-list{
+    padding-top: 2px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 234px;
+    width: 992px;
+    height: 456px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-left: none;
+    box-shadow: 0 8px 16px rgba(0,0,0,.18);
+}
+.slide>ul>li:hover>.slide-list{
+    display: block;
+}
+.slide-list>ul{
+    width: 100%;
+}
+.slide-list li{
+    float: left;
+   width: 248px;
+   height: 76px;
+   padding: 20px 0 20px 18px;
+   box-sizing: border-box;
+}
+.slide-list img{
+    height: 100%;
+    margin-right: 12px;
+}
+.slide-list span{
+    font-size: 14px;
+    color:#333 ;
+}
+.slide-list li:hover span{
+    color: #ff6700;
+}
+/*.slide-list3{*/
+/*    width: 744px;*/
+/*}*/
+.adv{
+    width: 100%;
+    height:224.61px;
+    margin: 14px 0 26px;
+}
+.adv-aside{
+    float: left;
+    width: 228px;
+    height:164px;
+    padding: 3px;
+    margin-top: 32px;
+    background-color: #424242;
+}
+.adv-img{
+    float: left;
+    width: 316px;
+    height: 170px;
+    margin-left: 14.66px;
+    transition: all .2s linear;
+}
+.adv-img:hover{
+    box-shadow: 0 15px 0px rgba(0,0,0,.1);
+}
+.adv-img img{
+    width: 100%;
+}
+.adv-aside li{
+    float: left;
+    width: 76px;
+    height: 82px;
+}
+.adv-aside a{
+    display: block;
+    color: #fff;
+    /* 透明度 */
+    opacity: .7;
+    font-size: 12px;
+    transition: all .2s;
+}
+.adv-aside i{
+    display: block;
+   font-size: 22px;
+   margin-bottom: 4px;
+}
+.adv-aside a:hover{
+    opacity: 1;
+}
+

@@ -1,0 +1,219 @@
+
+body{
+    color: #000;
+    font-size: 14px;
+    font-family: "微软雅黑";
+}
+ul,li{list-style:none;}
+nav
+{
+    padding:100px;
+    display: block!important;
+}
+br
+{
+    line-height: 200%;
+    height:100px;
+
+}
+div {
+    display: block;
+}
+* {
+
+    /*margin: 10px;*/
+    padding: 0;
+}
+
+.user_location {
+    width: 1188px;
+    margin: 0 auto;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    background: #eee;
+    padding-left: 12px;
+}
+
+.user_main {
+    width: 1200px;
+    margin: 28px auto 35px;
+
+}
+
+.user_leftbar{
+    width: 10%;
+    float:left;
+}
+
+
+
+#infoform{
+    float:left;
+}
+
+dl{
+    float: right;
+}
+
+.msg_box{
+    border: 1px solid #d9d8d6;
+}
+.msg_right{
+    width: 1032px;
+    margin: 0 auto;
+    float:right;
+    line-height: 32px;
+    font-size: 12px;
+    background: #fff;
+    padding-left: 12px;
+}
+.msg_title p {
+    font-size: 15px;
+    padding-left: 22px;
+}
+.msg_title {
+    height: 38px;
+    line-height: 38px;
+    border-bottom: 1px solid #d9d8d6;
+    background: #eee;
+}
+
+.msg_main {
+    padding-left: 22px;
+    padding-top: 20px;
+}
+
+.logo__text{
+    float: left;
+    padding-left: 12px;
+}
+
+.search {
+    float: right;
+    width: 280px;
+    height: 36px;
+    position: relative;
+    margin-top: 0px!important;
+    padding-right: 200px;
+
+}
+
+.logo_text {
+    width: 280px;
+    height: 36px;
+}
+.search_box .search_input_bg {
+    width: 280px;
+    height: 36px;
+    background-color: #f4f4f4;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+    left: 0px;
+}
+
+.search_input_bg {
+    width: 280px;
+    height: 36px;
+    background-color: #f4f4f4;
+    position: absolute;
+    top: 0px;
+    z-index: 0;
+    left: 0px;
+}
+
+a.serch_box_img {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    font-family: 微软雅黑;
+    margin-right: 0;
+    position: absolute;
+    float: none;
+    left: 10px;
+    top: 1px;
+    width: 30px;
+    height: 30px;
+    line-height: 20px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+a.serch_box_img span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    background-image: url(https://p4.lefile.cn/product/adminweb/2018/12/29/f26ff743-3f82-4072-b27a-193f0e9ad675.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.msg_ul {
+    float: left;
+    border-right: 1px dashed #d9d8d6;
+    padding-right: 40px;
+    margin-bottom: 0!important;
+    padding-left: 0!important;
+}
+.msg_ul .msg_li p {
+    float: left;
+}
+.msg_ul .msg_li .msg_toRegist {
+    margin-left: 50px;
+    background: url(https://p1.lefile.cn/product/adminweb/2020/07/15/ca2dfdd5-bca8-47dd-a84f-1fb3afa4570d.png) no-repeat left center;
+    background-size: 14px;
+    padding-left: 18px;
+    color: #FF2F2F;
+}
+.msg_ul .msg_li p .msg_red {
+    color: #e2231a;
+}
+.msg_text {
+    font-size: 11px;
+    color: #6f7170;
+}
+.msg_likes_mainl {
+    width: 60px;
+    float: left;
+}
+.msg_likes_mainl p {
+    font-size: 13px;
+    line-height: 24px;
+}
+.msg_likes_mains {
+    padding-left: 22px;
+    padding-top: 32px;
+    padding-right: 22px;
+    padding-bottom: 25px;
+}
+.msg_likes_btn {
+    float: left;
+    width: 700px;
+}
+.msg_likes_btn ul li {
+    width: 117px;
+    height: 30px;
+    line-height: 30px;
+    background: #c9c9c9;
+    text-align: center;
+    border-radius: 5px;
+}
+.search_box input {
+    width: 220px;
+    height: 36px;
+    outline: 0;
+    font-size: 13px;
+    line-height: 36px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: transparent;
+    border: 0;
+    color: #999;
+    padding: 0 0 0 50px;
+    box-sizing: content-box;
+}

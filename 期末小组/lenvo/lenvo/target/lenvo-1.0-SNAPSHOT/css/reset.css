@@ -1,0 +1,15 @@
+body{
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: #333;
+}
+image{
+    border: none;
+    vertical-align: middle;
+}
+td{
+    margin: 0;
+    padding: 0;
+}

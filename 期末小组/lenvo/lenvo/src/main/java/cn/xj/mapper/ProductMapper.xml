@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xj.mapper.ProductMapper" >
+  <resultMap id="BaseResultMap" type="cn.xj.pojo.Product" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="VARCHAR" />
+    <result column="collectedNum" property="collectednum" jdbcType="INTEGER" />
+    <result column="buyNum" property="buynum" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="stock" property="stock" jdbcType="INTEGER" />
+    <result column="pam1" property="pam1" jdbcType="VARCHAR" />
+    <result column="pam2" property="pam2" jdbcType="VARCHAR" />
+    <result column="pam3" property="pam3" jdbcType="VARCHAR" />
+    <result column="val3" property="val3" jdbcType="VARCHAR" />
+    <result column="val2" property="val2" jdbcType="VARCHAR" />
+    <result column="val1" property="val1" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="discount" property="discount" jdbcType="INTEGER" />
+    <result column="category_id1" property="categoryId1" jdbcType="INTEGER" />
+    <result column="category_id2" property="categoryId2" jdbcType="INTEGER" />
+    <result column="isDelete" property="isdelete" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.xj.pojo.Product" extends="BaseResultMap" >
+    <result column="discription" property="discription" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, name, price, collectedNum, buyNum, url, stock, pam1, pam2, pam3, val3, val2, 
+    val1, type, discount, category_id1, category_id2, isDelete
+  </sql>
+  <sql id="Blob_Column_List" >
+    discription
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.xj.pojo.ProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.xj.pojo.ProductExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.xj.pojo.ProductExample" >
+    delete from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.xj.pojo.Product" >
+    insert into product (id, name, price, 
+      collectedNum, buyNum, url, 
+      stock, pam1, pam2, 
+      pam3, val3, val2, val1, 
+      type, discount, category_id1, 
+      category_id2, isDelete, discription
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, 
+      #{collectednum,jdbcType=INTEGER}, #{buynum,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, 
+      #{stock,jdbcType=INTEGER}, #{pam1,jdbcType=VARCHAR}, #{pam2,jdbcType=VARCHAR}, 
+      #{pam3,jdbcType=VARCHAR}, #{val3,jdbcType=VARCHAR}, #{val2,jdbcType=VARCHAR}, #{val1,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER}, #{categoryId1,jdbcType=INTEGER}, 
+      #{categoryId2,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, #{discription,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.xj.pojo.Product" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="collectednum != null" >
+        collectedNum,
+      </if>
+      <if test="buynum != null" >
+        buyNum,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="stock != null" >
+        stock,
+      </if>
+      <if test="pam1 != null" >
+        pam1,
+      </if>
+      <if test="pam2 != null" >
+        pam2,
+      </if>
+      <if test="pam3 != null" >
+        pam3,
+      </if>
+      <if test="val3 != null" >
+        val3,
+      </if>
+      <if test="val2 != null" >
+        val2,
+      </if>
+      <if test="val1 != null" >
+        val1,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="categoryId1 != null" >
+        category_id1,
+      </if>
+      <if test="categoryId2 != null" >
+        category_id2,
+      </if>
+      <if test="isdelete != null" >
+        isDelete,
+      </if>
+      <if test="discription != null" >
+        discription,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="collectednum != null" >
+        #{collectednum,jdbcType=INTEGER},
+      </if>
+      <if test="buynum != null" >
+        #{buynum,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null" >
+        #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="pam1 != null" >
+        #{pam1,jdbcType=VARCHAR},
+      </if>
+      <if test="pam2 != null" >
+        #{pam2,jdbcType=VARCHAR},
+      </if>
+      <if test="pam3 != null" >
+        #{pam3,jdbcType=VARCHAR},
+      </if>
+      <if test="val3 != null" >
+        #{val3,jdbcType=VARCHAR},
+      </if>
+      <if test="val2 != null" >
+        #{val2,jdbcType=VARCHAR},
+      </if>
+      <if test="val1 != null" >
+        #{val1,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId1 != null" >
+        #{categoryId1,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId2 != null" >
+        #{categoryId2,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="discription != null" >
+        #{discription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.xj.pojo.ProductExample" resultType="java.lang.Integer" >
+    select count(*) from product
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update product
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=VARCHAR},
+      </if>
+      <if test="record.collectednum != null" >
+        collectedNum = #{record.collectednum,jdbcType=INTEGER},
+      </if>
+      <if test="record.buynum != null" >
+        buyNum = #{record.buynum,jdbcType=INTEGER},
+      </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stock != null" >
+        stock = #{record.stock,jdbcType=INTEGER},
+      </if>
+      <if test="record.pam1 != null" >
+        pam1 = #{record.pam1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pam2 != null" >
+        pam2 = #{record.pam2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pam3 != null" >
+        pam3 = #{record.pam3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.val3 != null" >
+        val3 = #{record.val3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.val2 != null" >
+        val2 = #{record.val2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.val1 != null" >
+        val1 = #{record.val1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.discount != null" >
+        discount = #{record.discount,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryId1 != null" >
+        category_id1 = #{record.categoryId1,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryId2 != null" >
+        category_id2 = #{record.categoryId2,jdbcType=INTEGER},
+      </if>
+      <if test="record.isdelete != null" >
+        isDelete = #{record.isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.discription != null" >
+        discription = #{record.discription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update product
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=VARCHAR},
+      collectedNum = #{record.collectednum,jdbcType=INTEGER},
+      buyNum = #{record.buynum,jdbcType=INTEGER},
+      url = #{record.url,jdbcType=VARCHAR},
+      stock = #{record.stock,jdbcType=INTEGER},
+      pam1 = #{record.pam1,jdbcType=VARCHAR},
+      pam2 = #{record.pam2,jdbcType=VARCHAR},
+      pam3 = #{record.pam3,jdbcType=VARCHAR},
+      val3 = #{record.val3,jdbcType=VARCHAR},
+      val2 = #{record.val2,jdbcType=VARCHAR},
+      val1 = #{record.val1,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      discount = #{record.discount,jdbcType=INTEGER},
+      category_id1 = #{record.categoryId1,jdbcType=INTEGER},
+      category_id2 = #{record.categoryId2,jdbcType=INTEGER},
+      isDelete = #{record.isdelete,jdbcType=INTEGER},
+      discription = #{record.discription,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update product
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=VARCHAR},
+      collectedNum = #{record.collectednum,jdbcType=INTEGER},
+      buyNum = #{record.buynum,jdbcType=INTEGER},
+      url = #{record.url,jdbcType=VARCHAR},
+      stock = #{record.stock,jdbcType=INTEGER},
+      pam1 = #{record.pam1,jdbcType=VARCHAR},
+      pam2 = #{record.pam2,jdbcType=VARCHAR},
+      pam3 = #{record.pam3,jdbcType=VARCHAR},
+      val3 = #{record.val3,jdbcType=VARCHAR},
+      val2 = #{record.val2,jdbcType=VARCHAR},
+      val1 = #{record.val1,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      discount = #{record.discount,jdbcType=INTEGER},
+      category_id1 = #{record.categoryId1,jdbcType=INTEGER},
+      category_id2 = #{record.categoryId2,jdbcType=INTEGER},
+      isDelete = #{record.isdelete,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.xj.pojo.Product" >
+    update product
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="collectednum != null" >
+        collectedNum = #{collectednum,jdbcType=INTEGER},
+      </if>
+      <if test="buynum != null" >
+        buyNum = #{buynum,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null" >
+        stock = #{stock,jdbcType=INTEGER},
+      </if>
+      <if test="pam1 != null" >
+        pam1 = #{pam1,jdbcType=VARCHAR},
+      </if>
+      <if test="pam2 != null" >
+        pam2 = #{pam2,jdbcType=VARCHAR},
+      </if>
+      <if test="pam3 != null" >
+        pam3 = #{pam3,jdbcType=VARCHAR},
+      </if>
+      <if test="val3 != null" >
+        val3 = #{val3,jdbcType=VARCHAR},
+      </if>
+      <if test="val2 != null" >
+        val2 = #{val2,jdbcType=VARCHAR},
+      </if>
+      <if test="val1 != null" >
+        val1 = #{val1,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId1 != null" >
+        category_id1 = #{categoryId1,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId2 != null" >
+        category_id2 = #{categoryId2,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        isDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="discription != null" >
+        discription = #{discription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.xj.pojo.Product" >
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      collectedNum = #{collectednum,jdbcType=INTEGER},
+      buyNum = #{buynum,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      pam1 = #{pam1,jdbcType=VARCHAR},
+      pam2 = #{pam2,jdbcType=VARCHAR},
+      pam3 = #{pam3,jdbcType=VARCHAR},
+      val3 = #{val3,jdbcType=VARCHAR},
+      val2 = #{val2,jdbcType=VARCHAR},
+      val1 = #{val1,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=INTEGER},
+      category_id1 = #{categoryId1,jdbcType=INTEGER},
+      category_id2 = #{categoryId2,jdbcType=INTEGER},
+      isDelete = #{isdelete,jdbcType=INTEGER},
+      discription = #{discription,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.xj.pojo.Product" >
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      collectedNum = #{collectednum,jdbcType=INTEGER},
+      buyNum = #{buynum,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=INTEGER},
+      pam1 = #{pam1,jdbcType=VARCHAR},
+      pam2 = #{pam2,jdbcType=VARCHAR},
+      pam3 = #{pam3,jdbcType=VARCHAR},
+      val3 = #{val3,jdbcType=VARCHAR},
+      val2 = #{val2,jdbcType=VARCHAR},
+      val1 = #{val1,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=INTEGER},
+      category_id1 = #{categoryId1,jdbcType=INTEGER},
+      category_id2 = #{categoryId2,jdbcType=INTEGER},
+      isDelete = #{isdelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
